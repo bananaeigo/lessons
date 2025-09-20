@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passive Voice - EFL Lesson Plan</title>
+    <title>Passive Voice - Interactive EFL Lesson</title>
     <style>
         * {
             margin: 0;
@@ -85,8 +85,16 @@
             background: #ed8936;
         }
 
+        .timer-btn.pause:hover {
+            background: #dd6b20;
+        }
+
         .timer-btn.reset {
             background: #e53e3e;
+        }
+
+        .timer-btn.reset:hover {
+            background: #c53030;
         }
 
         .navigation {
@@ -313,6 +321,25 @@
             margin-right: 10px;
         }
 
+        .completion-message {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .completion-message h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .celebration {
+            font-size: 3rem;
+            margin: 20px 0;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
@@ -344,25 +371,6 @@
                 font-size: 1.5rem;
             }
         }
-
-        .completion-message {
-            text-align: center;
-            padding: 30px;
-            background: linear-gradient(135deg, #48bb78, #38a169);
-            color: white;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        .completion-message h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .celebration {
-            font-size: 3rem;
-            margin: 20px 0;
-        }
     </style>
 </head>
 <body>
@@ -382,23 +390,23 @@
 
         <div class="navigation">
             <div class="nav-buttons">
-                <button class="nav-btn active" onclick="showSection(0)">📋 Learning Objectives</button>
-                <button class="nav-btn" onclick="showSection(1)">🔥 Warm-up Activity</button>
-                <button class="nav-btn" onclick="showSection(2)">📚 Presentation</button>
-                <button class="nav-btn" onclick="showSection(3)">✍️ Guided Practice</button>
-                <button class="nav-btn" onclick="showSection(4)">🎭 Production Activity</button>
-                <button class="nav-btn" onclick="showSection(5)">🎯 Wrap-up</button>
+                <button class="nav-btn active" data-section="0">📋 Learning Objectives</button>
+                <button class="nav-btn" data-section="1">🔥 Warm-up Activity</button>
+                <button class="nav-btn" data-section="2">📚 Presentation</button>
+                <button class="nav-btn" data-section="3">✍️ Guided Practice</button>
+                <button class="nav-btn" data-section="4">🎭 Production Activity</button>
+                <button class="nav-btn" data-section="5">🎯 Wrap-up</button>
             </div>
             <div class="progress-controls">
-                <button class="progress-btn" id="prevBtn" onclick="previousSection()" disabled>← Previous</button>
-                <button class="progress-btn" id="nextBtn" onclick="nextSection()">Next →</button>
+                <button class="progress-btn" id="prevBtn" disabled>← Previous</button>
+                <button class="progress-btn" id="nextBtn">Next →</button>
             </div>
         </div>
 
         <!-- Section 1: Learning Objectives -->
         <div class="content-section active" id="section-0">
             <h2 class="section-title">📋 Learning Objectives</h2>
-            <div class="section-timer" id="timer-0">⏱️ Suggested Time: 3 minutes</div>
+            <div class="section-timer">⏱️ Suggested Time: 3 minutes</div>
             
             <p><strong>By the end of this lesson, students will be able to:</strong></p>
             <ul class="objectives-list">
@@ -418,7 +426,7 @@
         <!-- Section 2: Warm-up Activity -->
         <div class="content-section" id="section-1">
             <h2 class="section-title">🔥 Warm-up Activity</h2>
-            <div class="section-timer" id="timer-1">⏱️ Suggested Time: 5 minutes</div>
+            <div class="section-timer">⏱️ Suggested Time: 5 minutes</div>
 
             <div class="activity-box">
                 <h3>🔍 Detective Work: Spot the Difference!</h3>
@@ -443,7 +451,7 @@
                 </div>
 
                 <div class="reveal-container">
-                    <button class="reveal-btn" onclick="toggleReveal('warmup-answer')">🔍 Reveal the Pattern</button>
+                    <button class="reveal-btn" data-target="warmup-answer">🔍 Reveal the Pattern</button>
                     <div class="reveal-content" id="warmup-answer">
                         <h4>Great observation! You've spotted the difference between:</h4>
                         <ul>
@@ -464,7 +472,7 @@
         <!-- Section 3: Presentation/Explanation -->
         <div class="content-section" id="section-2">
             <h2 class="section-title">📚 Presentation & Explanation</h2>
-            <div class="section-timer" id="timer-2">⏱️ Suggested Time: 12 minutes</div>
+            <div class="section-timer">⏱️ Suggested Time: 12 minutes</div>
 
             <div class="activity-box">
                 <h3>🔧 How to Build Passive Voice</h3>
@@ -477,7 +485,7 @@
             </div>
 
             <div class="reveal-container">
-                <button class="reveal-btn" onclick="toggleReveal('tenses-explanation')">📖 Passive Voice in Different Tenses</button>
+                <button class="reveal-btn" data-target="tenses-explanation">📖 Passive Voice in Different Tenses</button>
                 <div class="reveal-content" id="tenses-explanation">
                     <h4>Passive Voice Across Tenses:</h4>
                     <ul>
@@ -496,7 +504,7 @@
             <div class="activity-box">
                 <h3>🎯 When to Use Passive Voice</h3>
                 <div class="reveal-container">
-                    <button class="reveal-btn" onclick="toggleReveal('when-to-use')">💡 Show Usage Rules</button>
+                    <button class="reveal-btn" data-target="when-to-use">💡 Show Usage Rules</button>
                     <div class="reveal-content" id="when-to-use">
                         <ol>
                             <li><strong>When the action is more important than the doer:</strong><br>
@@ -517,7 +525,7 @@
             <div class="example-box">
                 <h3>⚠️ Common Mistakes to Avoid</h3>
                 <div class="reveal-container">
-                    <button class="reveal-btn" onclick="toggleReveal('common-mistakes')">❌ Show Common Errors</button>
+                    <button class="reveal-btn" data-target="common-mistakes">❌ Show Common Errors</button>
                     <div class="reveal-content" id="common-mistakes">
                         <ul>
                             <li>❌ "The book was wrote by her." → ✅ "The book was <strong>written</strong> by her."</li>
@@ -533,7 +541,7 @@
         <!-- Section 4: Guided Practice -->
         <div class="content-section" id="section-3">
             <h2 class="section-title">✍️ Guided Practice</h2>
-            <div class="section-timer" id="timer-3">⏱️ Suggested Time: 10 minutes</div>
+            <div class="section-timer">⏱️ Suggested Time: 10 minutes</div>
 
             <div class="exercise">
                 <h3>🔄 Practice 1: Active to Passive Transformation</h3>
@@ -542,7 +550,7 @@
                 <div class="question">
                     <strong>1. The teacher explains the lesson clearly.</strong>
                     <div class="reveal-container">
-                        <button class="reveal-btn" onclick="toggleReveal('practice1-1')">Show Answer</button>
+                        <button class="reveal-btn" data-target="practice1-1">Show Answer</button>
                         <div class="reveal-content" id="practice1-1">
                             <strong>Answer:</strong> The lesson is explained clearly by the teacher.
                         </div>
@@ -552,180 +560,7 @@
                 <div class="question">
                     <strong>2. Scientists have discovered a new species.</strong>
                     <div class="reveal-container">
-                        <button class="reveal-btn" onclick="toggleReveal('practice1-2')">Show Answer</button>
+                        <button class="reveal-btn" data-target="practice1-2">Show Answer</button>
                         <div class="reveal-content" id="practice1-2">
                             <strong>Answer:</strong> A new species has been discovered by scientists.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="question">
-                    <strong>3. The company will launch the product next month.</strong>
-                    <div class="reveal-container">
-                        <button class="reveal-btn" onclick="toggleReveal('practice1-3')">Show Answer</button>
-                        <div class="reveal-content" id="practice1-3">
-                            <strong>Answer:</strong> The product will be launched by the company next month.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="exercise">
-                <h3>🎯 Practice 2: Multiple Choice Challenge</h3>
-                <div class="question">
-                    <strong>The ancient city _______ by archaeologists in 1995.</strong>
-                    <div class="options">
-                        <div class="option" onclick="checkAnswer(this, false)">a) discovered</div>
-                        <div class="option" onclick="checkAnswer(this, true)">b) was discovered</div>
-                        <div class="option" onclick="checkAnswer(this, false)">c) has discovered</div>
-                        <div class="option" onclick="checkAnswer(this, false)">d) discovers</div>
-                    </div>
-                </div>
-
-                <div class="question">
-                    <strong>English _______ all over the world.</strong>
-                    <div class="options">
-                        <div class="option" onclick="checkAnswer(this, false)">a) speaks</div>
-                        <div class="option" onclick="checkAnswer(this, true)">b) is spoken</div>
-                        <div class="option" onclick="checkAnswer(this, false)">c) has spoken</div>
-                        <div class="option" onclick="checkAnswer(this, false)">d) was speaking</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="activity-box">
-                <h3>👥 Pair Work: Sentence Building</h3>
-                <p>With a partner, create passive voice sentences using these prompts:</p>
-                <ul>
-                    <li>The Mona Lisa / paint / Leonardo da Vinci</li>
-                    <li>This bridge / build / 1889</li>
-                    <li>The meeting / reschedule / next week</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Section 5: Production Activity -->
-        <div class="content-section" id="section-4">
-            <h2 class="section-title">🎭 Production Activity</h2>
-            <div class="section-timer" id="timer-4">⏱️ Suggested Time: 8 minutes</div>
-
-            <div class="activity-box">
-                <h3>🏛️ Museum Mystery: The Missing Artifact</h3>
-                <p><strong>Scenario:</strong> You're news reporters covering a story about a stolen artifact from a museum. Use passive voice to make your report sound professional and objective.</p>
-                
-                <div class="example-box">
-                    <h4>📰 News Report Template</h4>
-                    <p><strong>Use these passive voice phrases:</strong></p>
-                    <ul>
-                        <li>was stolen / was taken</li>
-                        <li>is believed to be</li>
-                        <li>was last seen</li>
-                        <li>has been reported</li>
-                        <li>will be investigated</li>
-                    </ul>
-                </div>
-
-                <div class="reveal-container">
-                    <button class="reveal-btn" onclick="toggleReveal('sample-report')">📺 View Sample News Report</button>
-                    <div class="reveal-content" id="sample-report">
-                        <h4>📰 Sample Report:</h4>
-                        <p><em>"A priceless ancient vase <strong>was stolen</strong> from the City Museum last night. The artifact <strong>is believed to be</strong> worth over $2 million and <strong>was last seen</strong> during yesterday's closing hours. The theft <strong>has been reported</strong> to local authorities, and the case <strong>will be investigated</strong> by specialized art crime detectives. Security footage <strong>is being reviewed</strong>, and witnesses <strong>are being interviewed</strong>."</em></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="exercise">
-                <h3>✍️ Your Turn: Create Your News Report</h3>
-                <p><strong>Task:</strong> Work in groups of 3-4. Each group creates a 2-minute news report using passive voice. Include:</p>
-                <ul>
-                    <li>What was stolen</li>
-                    <li>When it was discovered missing</li>
-                    <li>What is being done about it</li>
-                    <li>What will happen next</li>
-                </ul>
-                <p><em>Remember: Focus on the events, not who is doing them!</em></p>
-            </div>
-
-            <div class="activity-box">
-                <h3>🎤 Presentation Time</h3>
-                <p>Each group presents their news report. Other students listen for correct use of passive voice and provide peer feedback.</p>
-            </div>
-        </div>
-
-        <!-- Section 6: Wrap-up -->
-        <div class="content-section" id="section-5">
-            <h2 class="section-title">🎯 Wrap-up & Assessment</h2>
-            <div class="section-timer" id="timer-5">⏱️ Suggested Time: 2 minutes</div>
-
-            <div class="activity-box">
-                <h3>🧠 Quick Self-Assessment</h3>
-                <p><strong>Rate your confidence (1-5 stars):</strong></p>
-                <div class="reveal-container">
-                    <button class="reveal-btn" onclick="toggleReveal('self-assessment')">⭐ Show Assessment Checklist</button>
-                    <div class="reveal-content" id="self-assessment">
-                        <ul>
-                            <li>⭐⭐⭐⭐⭐ I can identify passive voice in sentences</li>
-                            <li>⭐⭐⭐⭐⭐ I can transform active to passive voice</li>
-                            <li>⭐⭐⭐⭐⭐ I understand when to use passive voice</li>
-                            <li>⭐⭐⭐⭐⭐ I can use passive voice in my own writing</li>
-                            <li>⭐⭐⭐⭐⭐ I feel confident using passive voice in formal contexts</li>
-                        </ul>
-                        <p><strong>Goal:</strong> Aim for at least 3 stars in each area!</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="exercise">
-                <h3>🏠 Homework Assignment</h3>
-                <div class="reveal-container">
-                    <button class="reveal-btn" onclick="toggleReveal('homework')">📝 View Homework</button>
-                    <div class="reveal-content" id="homework">
-                        <h4>📚 Your Mission for Next Class:</h4>
-                        <ol>
-                            <li><strong>Find & Collect:</strong> Find 5 examples of passive voice in news articles or academic texts</li>
-                            <li><strong>Transform:</strong> Write 5 active sentences and transform them into passive</li>
-                            <li><strong>Create:</strong> Write a short paragraph (50-80 words) about a historical event using at least 3 passive voice constructions</li>
-                            <li><strong>Reflect:</strong> Note down one situation where you think passive voice would be more appropriate than active voice</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-
-            <div class="completion-message">
-                <div class="celebration">🎉🎊🏆</div>
-                <h2>Congratulations!</h2>
-                <p>You've successfully completed the Passive Voice Mastery lesson!</p>
-                <p><strong>Remember:</strong> Passive voice is a powerful tool for professional and academic communication. Use it wisely!</p>
-            </div>
-
-            <div class="activity-box">
-                <h3>🔗 Additional Resources</h3>
-                <ul>
-                    <li>📖 Grammar reference: Units 21-22 in English Grammar in Use</li>
-                    <li>🎯 Online practice: Perfect English Grammar - Passive Voice exercises</li>
-                    <li>📺 Video review: BBC Learning English - Passive Voice explained</li>
-                    <li>📝 Writing practice: Academic Writing Month - Passive Voice in formal texts</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Global variables
-        let currentSection = 0;
-        let totalSections = 6;
-        let mainTimer = null;
-        let isPaused = false;
-        let totalTime = 40 * 60; // 40 minutes in seconds
-        let currentTime = totalTime;
-
-        // Timer functions
-        function updateTimerDisplay() {
-            const minutes = Math.floor(currentTime / 60);
-            const seconds = currentTime % 60;
-            document.getElementById('mainTimer').textContent = 
-                `⏰ Time: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        }
-
-        function startTimer() {
-            if (!mainTimer &&
+                        
