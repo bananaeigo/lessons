@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Management Mastery - Interactive Lesson</title>
+    <title>英語受動態レッスン</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'Meiryo', sans-serif;
             line-height: 1.6;
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -136,10 +136,6 @@
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
 
-        .reveal-button:active {
-            transform: translateY(0);
-        }
-
         .hidden-content {
             display: none;
             margin-top: 20px;
@@ -258,6 +254,43 @@
             transform: none;
         }
 
+        .sentence-item {
+            background: white;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .sentence-japanese {
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .sentence-answer {
+            color: #e74c3c;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .question-item {
+            background: #fff3cd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .trivia-item {
+            background: linear-gradient(135deg, #e8f5e8, #f0f8f0);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+        }
+
         .alert {
             position: fixed;
             top: 50%;
@@ -272,6 +305,8 @@
             z-index: 1000;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             display: none;
+            max-width: 80%;
+            text-align: center;
         }
 
         .alert.show {
@@ -288,15 +323,6 @@
                 transform: translate(-50%, -50%) scale(1);
                 opacity: 1;
             }
-        }
-
-        .summary-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
         }
 
         .completion-button {
@@ -320,48 +346,37 @@
             box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
         }
 
+        .grammar-example {
+            background: #e8f4fd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #2196F3;
+        }
+
+        .english-text {
+            color: #d63384;
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
                 padding: 15px;
-                border-radius: 10px;
             }
-
+            
             h1 {
                 font-size: 2em;
             }
-
+            
             .timer-display {
                 font-size: 2.5em;
             }
-
+            
             .reveal-button, .activity-button, .timer-button {
                 padding: 10px 20px;
                 font-size: 14px;
                 margin: 5px 2px;
-            }
-
-            .completion-button {
-                padding: 15px 30px;
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .timer-controls {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .timer-button {
-                margin: 5px 0;
-                width: 150px;
-            }
-
-            .reveal-button, .activity-button {
-                width: 100%;
-                margin: 5px 0;
             }
         }
     </style>
@@ -372,183 +387,242 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div class="progress-text" id="progressText">Progress: 0% Complete</div>
+            <div class="progress-text" id="progressText">進捗: 0% 完了</div>
         </div>
 
-        <h1>Time Management Mastery</h1>
+        <h1>英語受動態レッスン</h1>
 
         <div class="section">
-            <h2>Learning Objectives</h2>
-            <p>By the end of this lesson, you will be able to:</p>
+            <h2>学習目標</h2>
+            <p>このレッスンを完了すると、以下のことができるようになります：</p>
             <ul class="objectives-list">
-                <li>Identify and eliminate common time-wasting activities</li>
-                <li>Apply the Eisenhower Matrix to prioritize tasks effectively</li>
-                <li>Use time-blocking techniques to structure your day</li>
-                <li>Implement the Pomodoro Technique for focused work sessions</li>
-                <li>Create a personalized time management system</li>
+                <li>英語の受動態の基本構造を理解し、正確に使用できる</li>
+                <li>日本語の文章を英語の受動態に変換できる</li>
+                <li>受動態を使った質問を理解し、適切に答えることができる</li>
+                <li>日常会話で受動態を自然に使える</li>
             </ul>
         </div>
 
         <div class="section">
-            <h2>Understanding Time Management</h2>
-            <p>Time management is the process of planning and exercising conscious control over time spent on specific activities to increase efficiency and productivity.</p>
+            <h2>受動態の基本文法</h2>
+            <p>受動態（Passive Voice）は、動作を受ける側に焦点を当てた表現方法です。</p>
             
-            <button class="reveal-button" onclick="toggleContent('timeWasters')">Reveal Common Time Wasters</button>
-            <div id="timeWasters" class="hidden-content">
-                <h3>Top 5 Time Wasters to Avoid:</h3>
+            <div class="grammar-example">
+                <strong>基本構造：</strong><br>
+                <span class="english-text">Subject + be動詞 + 過去分詞</span>
+            </div>
+            
+            <button class="reveal-button" onclick="toggleContent('grammarExamples')">例文を表示</button>
+            <div id="grammarExamples" class="hidden-content">
+                <h3>基本例文</h3>
+                <div class="grammar-example">
+                    <strong>現在形：</strong> <span class="english-text">This book is read by many people.</span><br>
+                    （この本は多くの人に読まれています）
+                </div>
+                <div class="grammar-example">
+                    <strong>過去形：</strong> <span class="english-text">The letter was written yesterday.</span><br>
+                    （その手紙は昨日書かれました）
+                </div>
+                <div class="grammar-example">
+                    <strong>未来形：</strong> <span class="english-text">The meeting will be held tomorrow.</span><br>
+                    （会議は明日開催される予定です）
+                </div>
+            </div>
+
+            <button class="reveal-button" onclick="toggleContent('usageTips')">使用法のコツ</button>
+            <div id="usageTips" class="hidden-content">
+                <h3>受動態を使う場面</h3>
                 <ul>
-                    <li><strong>Social Media Scrolling:</strong> Can consume hours without realizing it</li>
-                    <li><strong>Perfectionism:</strong> Spending too much time on minor details</li>
-                    <li><strong>Multitasking:</strong> Actually reduces efficiency and increases errors</li>
-                    <li><strong>Procrastination:</strong> Delaying important tasks for easier ones</li>
-                    <li><strong>Poor Planning:</strong> Starting days without clear priorities</li>
+                    <li><strong>動作主が不明：</strong> <span class="english-text">My phone was stolen.</span></li>
+                    <li><strong>動作主より結果が重要：</strong> <span class="english-text">The problem was solved.</span></li>
+                    <li><strong>フォーマルな文章：</strong> <span class="english-text">The report was submitted.</span></li>
                 </ul>
             </div>
         </div>
 
         <div class="section">
-            <h2>The Eisenhower Matrix</h2>
-            <p>This powerful tool helps you categorize tasks based on urgency and importance.</p>
+            <h2>文変換練習</h2>
+            <p>以下の日本語文を英語の受動態に変換してください。</p>
             
-            <button class="reveal-button" onclick="toggleContent('eisenhowerDetails')">Learn About the Four Quadrants</button>
-            <div id="eisenhowerDetails" class="hidden-content">
-                <h3>The Four Quadrants:</h3>
-                <ul>
-                    <li><strong>Quadrant 1:</strong> Urgent & Important (Do First) - Crises, emergencies</li>
-                    <li><strong>Quadrant 2:</strong> Not Urgent & Important (Schedule) - Prevention, planning, development</li>
-                    <li><strong>Quadrant 3:</strong> Urgent & Not Important (Delegate) - Interruptions, some emails</li>
-                    <li><strong>Quadrant 4:</strong> Not Urgent & Not Important (Eliminate) - Time wasters, excessive entertainment</li>
-                </ul>
-                <p><strong>Pro Tip:</strong> Focus most of your energy on Quadrant 2 activities for long-term success!</p>
-            </div>
-
-            <div class="practice-activity">
-                <h3>Practice Activity: Categorize Your Tasks</h3>
-                <p>Think about your current tasks and mentally place them in the appropriate quadrants.</p>
-                <button class="activity-button" onclick="completeActivity(this, 'matrix')">I've Categorized My Tasks</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Time Blocking Technique</h2>
-            <p>Time blocking involves scheduling specific blocks of time for different activities or types of work.</p>
-            
-            <button class="reveal-button" onclick="toggleContent('timeBlockingTips')">Reveal Time Blocking Best Practices</button>
-            <div id="timeBlockingTips" class="hidden-content">
-                <h3>Effective Time Blocking Tips:</h3>
-                <ul>
-                    <li>Start with your most important tasks during peak energy hours</li>
-                    <li>Include buffer time between blocks for transitions</li>
-                    <li>Block similar tasks together to maintain flow</li>
-                    <li>Reserve time for unexpected urgent matters</li>
-                    <li>Review and adjust your blocks weekly</li>
-                </ul>
-                <p><strong>Remember:</strong> Be realistic about how long tasks actually take!</p>
-            </div>
-
-            <div class="practice-activity">
-                <h3>Practice Activity: Plan Tomorrow</h3>
-                <p>Create a time-blocked schedule for tomorrow using this technique.</p>
-                <button class="activity-button" onclick="completeActivity(this, 'timeblock')">I've Created My Time-Blocked Schedule</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>The Pomodoro Technique</h2>
-            <p>This technique uses focused 25-minute work sessions followed by short breaks to maintain high productivity.</p>
-            
-            <button class="reveal-button" onclick="toggleContent('pomodoroSteps')">Show Pomodoro Steps</button>
-            <div id="pomodoroSteps" class="hidden-content">
-                <h3>How to Use the Pomodoro Technique:</h3>
-                <ol>
-                    <li>Choose a task to work on</li>
-                    <li>Set timer for 25 minutes</li>
-                    <li>Work on the task with full focus</li>
-                    <li>Take a 5-minute break when timer rings</li>
-                    <li>Repeat 3 more times, then take a longer 15-30 minute break</li>
-                </ol>
-            </div>
-
             <div class="timer-container">
-                <h3>Try It Now: Pomodoro Timer</h3>
-                <p>Use this timer for a focused 5-minute practice session</p>
-                <div class="timer-display" id="timerDisplay">05:00</div>
+                <h3>練習タイマー</h3>
+                <p>10分で文変換に挑戦してみましょう</p>
+                <div class="timer-display" id="timerDisplay">10:00</div>
                 <div class="timer-controls">
-                    <button class="timer-button start" onclick="startTimer()">Start</button>
-                    <button class="timer-button pause" onclick="pauseTimer()">Pause</button>
-                    <button class="timer-button" onclick="resetTimer()">Reset</button>
+                    <button class="timer-button start" onclick="startTimer()">開始</button>
+                    <button class="timer-button pause" onclick="pauseTimer()">一時停止</button>
+                    <button class="timer-button" onclick="resetTimer()">リセット</button>
+                </div>
+            </div>
+
+            <button class="reveal-button" onclick="toggleContent('sentenceConversion')">変換問題を表示</button>
+            <div id="sentenceConversion" class="hidden-content">
+                <div class="sentence-item">
+                    <div class="sentence-japanese">1. 多くの人がこの本を読みます。</div>
+                    <button class="reveal-button" onclick="toggleContent('convert1')">答えを表示</button>
+                    <div id="convert1" class="hidden-content">
+                        <div class="sentence-answer">This book is read by many people.</div>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="sentence-japanese">2. 彼女は昨日そのメールを送りました。</div>
+                    <button class="reveal-button" onclick="toggleContent('convert2')">答えを表示</button>
+                    <div id="convert2" class="hidden-content">
+                        <div class="sentence-answer">The email was sent by her yesterday.</div>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="sentence-japanese">3. 学生たちが明日この教室を掃除します。</div>
+                    <button class="reveal-button" onclick="toggleContent('convert3')">答えを表示</button>
+                    <div id="convert3" class="hidden-content">
+                        <div class="sentence-answer">This classroom will be cleaned by the students tomorrow.</div>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="sentence-japanese">4. 有名な建築家がこの建物を設計しました。</div>
+                    <button class="reveal-button" onclick="toggleContent('convert4')">答えを表示</button>
+                    <div id="convert4" class="hidden-content">
+                        <div class="sentence-answer">This building was designed by a famous architect.</div>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="sentence-japanese">5. 彼らは毎年この祭りを開催します。</div>
+                    <button class="reveal-button" onclick="toggleContent('convert5')">答えを表示</button>
+                    <div id="convert5" class="hidden-content">
+                        <div class="sentence-answer">This festival is held by them every year.</div>
+                    </div>
                 </div>
             </div>
 
             <div class="practice-activity">
-                <h3>Practice Activity: Complete a Pomodoro Session</h3>
-                <p>Use the timer above to complete a focused 5-minute work session on any task.</p>
-                <button class="activity-button" onclick="completeActivity(this, 'pomodoro')">I've Completed My Pomodoro Session</button>
+                <h3>練習アクティビティ：文変換完了</h3>
+                <p>5つの日本語文を英語の受動態に変換する練習を完了してください。</p>
+                <button class="activity-button" onclick="completeActivity(this, 'conversion')">文変換練習完了</button>
             </div>
         </div>
 
         <div class="section">
-            <h2>Building Your Personal System</h2>
-            <p>Effective time management requires a personalized approach that fits your lifestyle and work style.</p>
-            
-            <button class="reveal-button" onclick="toggleContent('systemComponents')">Reveal System Components</button>
-            <div id="systemComponents" class="hidden-content">
-                <h3>Essential Components of Your Time Management System:</h3>
-                <ul>
-                    <li><strong>Capture System:</strong> Tools to quickly record tasks and ideas</li>
-                    <li><strong>Planning Ritual:</strong> Daily/weekly planning sessions</li>
-                    <li><strong>Priority Framework:</strong> Method for deciding what's most important</li>
-                    <li><strong>Focus Techniques:</strong> Methods to maintain concentration</li>
-                    <li><strong>Review Process:</strong> Regular evaluation and adjustment of your system</li>
-                </ul>
+            <h2>練習問題</h2>
+            <p>受動態を使った簡単な練習問題です。</p>
+
+            <button class="reveal-button" onclick="toggleContent('practiceQuestions')">練習問題を表示</button>
+            <div id="practiceQuestions" class="hidden-content">
+                <div class="question-item">
+                    <strong>Q1:</strong> 「その写真は誰によって撮られましたか？」を英語で言うと？<br>
+                    <button class="reveal-button" onclick="toggleContent('practice1')">答えを表示</button>
+                    <div id="practice1" class="hidden-content">
+                        <strong>A1:</strong> <span class="english-text">Who was the photo taken by?</span>
+                    </div>
+                </div>
+
+                <div class="question-item">
+                    <strong>Q2:</strong> 「そのケーキは昨日作られました」を英語で言うと？<br>
+                    <button class="reveal-button" onclick="toggleContent('practice2')">答えを表示</button>
+                    <div id="practice2" class="hidden-content">
+                        <strong>A2:</strong> <span class="english-text">The cake was made yesterday.</span>
+                    </div>
+                </div>
+
+                <div class="question-item">
+                    <strong>Q3:</strong> 「英語は世界中で話されています」を英語で言うと？<br>
+                    <button class="reveal-button" onclick="toggleContent('practice3')">答えを表示</button>
+                    <div id="practice3" class="hidden-content">
+                        <strong>A3:</strong> <span class="english-text">English is spoken all over the world.</span>
+                    </div>
+                </div>
             </div>
 
             <div class="practice-activity">
-                <h3>Practice Activity: Design Your System</h3>
-                <p>Choose one technique from this lesson to implement starting tomorrow.</p>
-                <button class="activity-button" onclick="completeActivity(this, 'system')">I've Chosen My Starting Technique</button>
+                <h3>練習アクティビティ：練習問題完了</h3>
+                <p>3つの練習問題を確認してください。</p>
+                <button class="activity-button" onclick="completeActivity(this, 'practice')">練習問題完了</button>
             </div>
         </div>
 
-        <div class="summary-card">
-            <h2>Lesson Summary</h2>
-            <p>Congratulations! You've learned powerful time management techniques that can transform your productivity:</p>
+        <div class="section">
+            <h2>文化トリビア</h2>
+            <p>受動態を使った世界の文化に関するトリビア問題です。</p>
+
+            <button class="reveal-button" onclick="toggleContent('trivia')">トリビアを表示</button>
+            <div id="trivia" class="hidden-content">
+                <div class="trivia-item">
+                    <strong>Q1:</strong> <span class="english-text">Where was pizza invented?</span><br>
+                    <button class="reveal-button" onclick="toggleContent('trivia1')">答えを表示</button>
+                    <div id="trivia1" class="hidden-content">
+                        <strong>A1:</strong> <span class="english-text">Pizza was invented in Italy.</span>
+                    </div>
+                </div>
+
+                <div class="trivia-item">
+                    <strong>Q2:</strong> <span class="english-text">When was the Great Wall of China built?</span><br>
+                    <button class="reveal-button" onclick="toggleContent('trivia2')">答えを表示</button>
+                    <div id="trivia2" class="hidden-content">
+                        <strong>A2:</strong> <span class="english-text">The Great Wall of China was built over many centuries.</span>
+                    </div>
+                </div>
+
+                <div class="trivia-item">
+                    <strong>Q3:</strong> <span class="english-text">Where is the Taj Mahal located?</span><br>
+                    <button class="reveal-button" onclick="toggleContent('trivia3')">答えを表示</button>
+                    <div id="trivia3" class="hidden-content">
+                        <strong>A3:</strong> <span class="english-text">The Taj Mahal is located in India.</span>
+                    </div>
+                </div>
+
+                <div class="trivia-item">
+                    <strong>Q4:</strong> <span class="english-text">When was the telephone invented?</span><br>
+                    <button class="reveal-button" onclick="toggleContent('trivia4')">答えを表示</button>
+                    <div id="trivia4" class="hidden-content">
+                        <strong>A4:</strong> <span class="english-text">The telephone was invented in 1876.</span>
+                    </div>
+                </div>
+
+                <div class="trivia-item">
+                    <strong>Q5:</strong> <span class="english-text">Where was chocolate first discovered?</span><br>
+                    <button class="reveal-button" onclick="toggleContent('trivia5')">答えを表示</button>
+                    <div id="trivia5" class="hidden-content">
+                        <strong>A5:</strong> <span class="english-text">Chocolate was first discovered in Central America.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="practice-activity">
+                <h3>練習アクティビティ：トリビア完了</h3>
+                <p>5つの文化トリビア問題を確認してください。</p>
+                <button class="activity-button" onclick="completeActivity(this, 'trivia')">トリビア完了</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>レッスン完了</h2>
+            <p>お疲れさまでした！英語の受動態の基本をマスターしました。</p>
             <ul>
-                <li>✓ Identified common time wasters to avoid</li>
-                <li>✓ Mastered the Eisenhower Matrix for prioritization</li>
-                <li>✓ Practiced time blocking for better scheduling</li>
-                <li>✓ Experienced the Pomodoro Technique firsthand</li>
-                <li>✓ Designed your personal time management approach</li>
+                <li>✓ 受動態の基本構造を理解</li>
+                <li>✓ 文変換練習を完了</li>
+                <li>✓ 練習問題を解答</li>
+                <li>✓ 文化トリビアで応用練習</li>
             </ul>
             
-            <button class="reveal-button" onclick="toggleContent('nextSteps')">Show Next Steps</button>
-            <div id="nextSteps" class="hidden-content">
-                <h3>Your Next Steps:</h3>
-                <ul>
-                    <li>Implement one technique consistently for one week</li>
-                    <li>Track your productivity and energy levels</li>
-                    <li>Adjust and refine your approach</li>
-                    <li>Gradually add more techniques as habits form</li>
-                    <li>Share your progress with an accountability partner</li>
-                </ul>
-            </div>
+            <button class="completion-button" onclick="completeLesson()">レッスン完了</button>
         </div>
-
-        <button class="completion-button" onclick="completeLesson()">Complete Lesson</button>
     </div>
 
     <div id="alertBox" class="alert"></div>
 
     <script>
         let timerInterval;
-        let timeLeft = 300; // 5 minutes in seconds
+        let timeLeft = 600; // 10 minutes in seconds
         let isRunning = false;
         let completedActivities = new Set();
         let revealedSections = new Set();
 
         function updateProgress() {
-            const totalSections = 6; // Total number of reveal sections
-            const totalActivities = 4; // Total number of practice activities
+            const totalSections = 8; // Total reveal sections
+            const totalActivities = 3; // Total practice activities
             
             const sectionProgress = revealedSections.size / totalSections;
             const activityProgress = completedActivities.size / totalActivities;
@@ -556,7 +630,7 @@
             const overallProgress = Math.round(((sectionProgress + activityProgress) / 2) * 100);
             
             document.getElementById('progressFill').style.width = overallProgress + '%';
-            document.getElementById('progressText').textContent = `Progress: ${overallProgress}% Complete`;
+            document.getElementById('progressText').textContent = `進捗: ${overallProgress}% 完了`;
         }
 
         function toggleContent(contentId) {
@@ -576,11 +650,11 @@
 
         function completeActivity(button, activityId) {
             if (!completedActivities.has(activityId)) {
-                button.textContent = "✓ Completed!";
+                button.textContent = "✓ 完了！";
                 button.classList.add('completed');
                 completedActivities.add(activityId);
                 updateProgress();
-                showAlert("Great job! Activity completed successfully!");
+                showAlert("素晴らしい！アクティビティが完了しました！");
             }
         }
 
@@ -598,7 +672,7 @@
 
         function resetTimer() {
             pauseTimer();
-            timeLeft = 300;
+            timeLeft = 600;
             updateTimerDisplay();
         }
 
@@ -612,7 +686,7 @@
                 
                 if (timeLeft === 0) {
                     pauseTimer();
-                    showAlert("Time's up! Great job on your focused work session!");
+                    showAlert("時間終了！お疲れさまでした！");
                 }
             }
         }
@@ -628,12 +702,12 @@
         }
 
         function completeLesson() {
-            if (completedActivities.size === 4 && revealedSections.size >= 4) {
-                showAlert("🎉 Congratulations! You've successfully completed the Time Management Mastery lesson!");
+            if (completedActivities.size === 3 && revealedSections.size >= 6) {
+                showAlert("🎉 おめでとうございます！受動態レッスンを完了しました！");
                 document.getElementById('progressFill').style.width = '100%';
-                document.getElementById('progressText').textContent = 'Progress: 100% Complete - Lesson Finished!';
+                document.getElementById('progressText').textContent = '進捗: 100% 完了 - レッスン終了！';
             } else {
-                showAlert("Please complete more activities and explore the reveal sections to finish the lesson.");
+                showAlert("レッスンを完了するには、もっと多くのセクションを確認し、アクティビティを完了してください。");
             }
         }
 
@@ -641,7 +715,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateTimerDisplay();
             updateProgress();
-            showAlert("Welcome to your Time Management lesson! Start by exploring the content and completing activities.");
+            showAlert("英語受動態レッスンへようこそ！コンテンツを確認してアクティビティを完了してください。");
         });
 
         // Add keyboard shortcuts
